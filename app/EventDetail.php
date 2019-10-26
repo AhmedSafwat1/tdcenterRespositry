@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserEvent extends Model
+class EventDetail extends Model
 {
     //
 }

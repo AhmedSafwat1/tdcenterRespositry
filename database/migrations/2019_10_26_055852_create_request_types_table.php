@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserEventsTable extends Migration
+class CreateRequestTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateUserEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_events', function (Blueprint $table) {
+        Schema::create('request_types', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
-
-            $table->biginteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-
-            $table->biginteger('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -32,6 +27,6 @@ class CreateUserEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_events');
+        Schema::dropIfExists('request_types');
     }
 }
