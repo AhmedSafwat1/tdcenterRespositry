@@ -23,6 +23,9 @@ class CreateEventsTable extends Migration
 
             $table->biginteger('program_id')->unsigned();
             $table->foreign('program_id')->references('id')->on('programs');
+
+            // trainers_ids with split
+            $table->string('trainers');
         });
     }
 
