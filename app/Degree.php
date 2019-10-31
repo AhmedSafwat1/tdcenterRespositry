@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EmploymentCase extends Model
+class Degree extends Model
 {
-    // emp_cases & users relation => Note : user might be change his employment case ????
+    // users & degrees relation => Note : user might be change his degree ????
     public function users() {
         return $this->hasMany('App\User');
     }
