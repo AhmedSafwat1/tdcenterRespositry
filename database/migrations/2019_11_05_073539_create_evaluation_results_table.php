@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventEvaluationsTable extends Migration
+class CreateEvaluationResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,16 @@ class CreateEventEvaluationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_evaluations', function (Blueprint $table) {
+        Schema::create('evaluation_results', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->biginteger('reference_id')->unsigned();
-            $table->foreign('reference_id')->references('id')->on('evaluation_references');
-
+            $table->biginteger('eval_ref_id')->unsigned();
+            $table->foreign('eval_ref_id')->references('id')->on('evaluation_references');
+            $table->integer('score');
             $table->biginteger('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events');
-
-            $table->string('score');
-
-            $table->bigInteger('trainee_id')->unsigned();
-
-            $table->biginteger('trainer_id')->unsigned();
-            $table->foreign('trainer_id')->references('id')->on('users');
-
+            $table->biginteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -40,6 +34,6 @@ class CreateEventEvaluationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_evaluations');
+        Schema::dropIfExists('evaluation_results');
     }
 }

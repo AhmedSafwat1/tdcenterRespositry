@@ -16,7 +16,9 @@ class CreateRequestsTable extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('req_name');
-            $table->string('req_type');
+            // $table->string('req_type');
+            $table->unsignedBigInteger('request_type_id');
+            $table->foreign('request_type_id')->references('id')->on('request_types');
             $table->string('req_status');
             $table->integer('req_number');
 

@@ -20,6 +20,17 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->enum('gender', ['male', 'female']);
+            $table->date('birthdate');
+            $table->string('nationality');
+            $table->bigInteger('national_id');
+            $table->bigInteger('phone_number');
+            $table->bigInteger('home_phone');
+            $table->string('username');
+            $table->boolean('verified')->default(0);
+            $table->boolean('is_deleted')->default(0);
+            $table->text('upload_file');
             $table->timestamps();
         });
     }

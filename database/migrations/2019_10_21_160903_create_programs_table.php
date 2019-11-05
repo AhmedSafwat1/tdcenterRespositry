@@ -21,6 +21,10 @@ class CreateProgramsTable extends Migration
 
             $table->biginteger('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules');
+
+            // if the program depends on another program (prerequisite)
+            $table->biginteger('dependent_id')->unsigned();
+            $table->foreign('dependent_id')->references('id')->on('programs');
         });
     }
 
