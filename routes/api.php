@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('lang/{locale}', 'LocalizationController@index');
+
 Route::group([
     'prefix' => 'auth'
 ], function () {
