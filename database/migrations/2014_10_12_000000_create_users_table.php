@@ -29,10 +29,13 @@ class CreateUsersTable extends Migration
             $table->bigInteger('phone_number');
             $table->bigInteger('home_phone')->nullable();
             $table->string('username');
-            $table->boolean('verified')->default(0);
-            $table->boolean('is_deleted')->default(0);
+            // $table->boolean('verified')->default(0);
+            $table->boolean('active')->default(false);
+            $table->string('activation_token');
             $table->text('upload_file');
             $table->timestamps();
+            // $table->boolean('is_deleted')->default(0);
+            $table->softDeletes();
         });
     }
 

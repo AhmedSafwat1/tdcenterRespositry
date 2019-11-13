@@ -6,10 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -28,8 +31,10 @@ class User extends Authenticatable
         'phone_number',
         'home_phone',
         'username',
-        'verified',
-        'is_deleted',
+        // 'verified',
+        'active',
+        'activation_token',
+        // 'is_deleted',
         'upload_file',
         'university_id',
         'faculty_id',
@@ -45,7 +50,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'activation_token',
     ];
 
     /**
