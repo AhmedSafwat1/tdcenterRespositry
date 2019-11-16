@@ -78,7 +78,7 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->hasMany('App\Event');
+        return $this->belongsToMany('App\Event',"event_user")->withPivot("status");
     }
 
     public function equivelent_certificates()
@@ -93,11 +93,11 @@ class User extends Authenticatable
 
     public function university()
     {
-        return $this->hasOne('App\University','id','uni_id');
+        return $this->belongsTo('App\University','university_id','id');
     }
     public function faculty()
     {
-        return $this->hasOne('App\Faculty','id','fac_id');
+        return $this->belongsTo('App\Faculty','faculty_id','id');
     }
 
     public function major()
@@ -106,6 +106,6 @@ class User extends Authenticatable
     }
     public function department()
     {
-        return $this->hasOne('App\department','id','dep_id');
+        return $this->belongsTo('App\department','department_id','id');
     }
 }

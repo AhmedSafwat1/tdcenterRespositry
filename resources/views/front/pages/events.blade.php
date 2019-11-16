@@ -11,7 +11,7 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="title text-white">Event Table</h3>
+              <h2 class="title text-white">Event Table</h2>
               <ol class="breadcrumb text-left text-black mt-10">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Pages</a></li>

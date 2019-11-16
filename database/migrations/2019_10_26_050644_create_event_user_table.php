@@ -17,6 +17,7 @@ class CreateEventUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('user_id');
+            $table->string("status")->default("pending");
             $table->timestamps();
         });
     }

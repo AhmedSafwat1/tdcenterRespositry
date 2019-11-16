@@ -121,7 +121,10 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 col-md-5">
                     <div class="widget no-border m-0">
-                      <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="javascript:void(0)"><img src="front/images/logo-wide.png" alt=""></a>
+                      <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="javascript:void(0)">
+                          <img src="{{ asset("front/images/logo-wide.png") }}" alt="">
+
+                      </a>
                     </div>
                   </div>
 
@@ -133,96 +136,98 @@
                 <div class="container">
                   <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
                     <ul class="menuzord-menu">
-                      <li class="active"><a href="/">{{ __("menu.home")}}</a></li>
-                      <li><a href="/suggestions">{{ __("menu.sug")}}</a></li>
-                      <li><a href="/news">{{ __("menu.news")}}</a></li>
-                      <li><a href="/gallery">{{ __("menu.gallery")}}</a></li>
-                      <li><a href="/contact">{{ __("menu.contact")}}</a></li>
+                      <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">{{ __("menu.home")}}</a></li>
+{{--                      <li><a href="/suggestions">{{ __("menu.sug")}}</a></li>--}}
+{{--                      <li><a href="/news">{{ __("menu.news")}}</a></li>--}}
+{{--                      <li><a href="/gallery">{{ __("menu.gallery")}}</a></li>--}}
+{{--                      <li><a href="/contact">{{ __("menu.contact")}}</a></li>--}}
 
-                      <li><a href="">{{ __("menu.about.main")}}</a>
-                        <ul class="dropdown">
-                          <li><a href="page-course-gird.html">{{ __("menu.about.brief")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.vision")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.goals")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.structure")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.certificate")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.iPartner")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.about.rPartner")}}</a></li>
-                        </ul>
-                      </li>
+{{--                      <li><a href="">{{ __("menu.about.main")}}</a>--}}
+{{--                        <ul class="dropdown">--}}
+{{--                          <li><a href="page-course-gird.html">{{ __("menu.about.brief")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.vision")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.goals")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.structure")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.certificate")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.iPartner")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.about.rPartner")}}</a></li>--}}
+{{--                        </ul>--}}
+{{--                      </li>--}}
 
-                      <li><a href="">{{ __("menu.team.main")}}</a>
-                        <ul class="dropdown">
-                          <li><a href="page-course-gird.html">{{ __("menu.team.board")}}</a></li>
-                          <li><a href="page-course-list.html">{{ __("menu.team.trainers")}}</a></li>
-                          <li><a href="">{{ __("menu.team.employees")}}</a></li>
-                        </ul>
-                      </li>
+{{--                      <li><a href="">{{ __("menu.team.main")}}</a>--}}
+{{--                        <ul class="dropdown">--}}
+{{--                          <li><a href="page-course-gird.html">{{ __("menu.team.board")}}</a></li>--}}
+{{--                          <li><a href="page-course-list.html">{{ __("menu.team.trainers")}}</a></li>--}}
+{{--                          <li><a href="">{{ __("menu.team.employees")}}</a></li>--}}
+{{--                        </ul>--}}
+{{--                      </li>--}}
 
-                      <li><a href="#">{{ __("menu.services.main")}}</a>
-                        <ul class="dropdown">
-                          <li><a href="#">{{ __("menu.services.programmes.main")}}</a>
-                            <ul class="dropdown">
-                              <li><a href="#">{{ __("menu.services.programmes.academic.main")}}</a>
-                                <ul class="dropdown">
-                                  <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.programmes.academic.teaching-systems")}}</a></li>
-                                  <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.programmes.academic.sResearch")}}</a></li>
-                                  <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.programmes.academic.leadership")}}</a></li>
-                                  <li><a href="portfolio-boxed-gutter-4-col.html">{{ __("menu.services.programmes.academic.personal")}}</a></li>
-                                  <li><a href="portfolio-boxed-gutter-5-col.html">{{ __("menu.services.programmes.academic.elearning")}}</a></li>
-                                </ul>
-                              </li>
-                              <li><a href="#">{{ __("menu.services.programmes.others.main")}}</a>
-                                <ul class="dropdown">
-                                  <li><a href="portfolio-boxed-1-col.html">{{ __("menu.services.programmes.others.langs")}}</a></li>
-                                  <li><a href="portfolio-boxed-2-col.html">{{ __("menu.services.programmes.others.hr")}}</a></li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                          <li><a href="#">{{ __("menu.services.consultation.main")}}</a>
-                            <ul class="dropdown">
-                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.consultation.needs")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.consultation.design")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.consultation.implementation")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-4-col.html">{{ __("menu.services.consultation.impact")}}</a></li>
-                              </ul>
-                          </li>
-                          <li><a href="#">{{ __("menu.services.accreditation.main")}}</a>
-                            <ul class="dropdown">
-                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.accreditation.centers")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.accreditation.programmes")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.accreditation.trainers")}}</a></li>
-                              </ul>
-                          </li>
-                          <li><a href="#">{{ __("menu.services.special.main")}}</a>
-                            <ul class="dropdown">
-                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.special.scientific_research")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.special.teaching_process")}}</a></li>
-                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.special.elearning")}}</a></li>
-                              </ul>
-                          </li>
-                        </ul>
-                      </li>
+{{--                      <li><a href="#">{{ __("menu.services.main")}}</a>--}}
+{{--                        <ul class="dropdown">--}}
+{{--                          <li><a href="#">{{ __("menu.services.programmes.main")}}</a>--}}
+{{--                            <ul class="dropdown">--}}
+{{--                              <li><a href="#">{{ __("menu.services.programmes.academic.main")}}</a>--}}
+{{--                                <ul class="dropdown">--}}
+{{--                                  <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.programmes.academic.teaching-systems")}}</a></li>--}}
+{{--                                  <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.programmes.academic.sResearch")}}</a></li>--}}
+{{--                                  <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.programmes.academic.leadership")}}</a></li>--}}
+{{--                                  <li><a href="portfolio-boxed-gutter-4-col.html">{{ __("menu.services.programmes.academic.personal")}}</a></li>--}}
+{{--                                  <li><a href="portfolio-boxed-gutter-5-col.html">{{ __("menu.services.programmes.academic.elearning")}}</a></li>--}}
+{{--                                </ul>--}}
+{{--                              </li>--}}
+{{--                              <li><a href="#">{{ __("menu.services.programmes.others.main")}}</a>--}}
+{{--                                <ul class="dropdown">--}}
+{{--                                  <li><a href="portfolio-boxed-1-col.html">{{ __("menu.services.programmes.others.langs")}}</a></li>--}}
+{{--                                  <li><a href="portfolio-boxed-2-col.html">{{ __("menu.services.programmes.others.hr")}}</a></li>--}}
+{{--                                </ul>--}}
+{{--                              </li>--}}
+{{--                            </ul>--}}
+{{--                          </li>--}}
+
+{{--                          <li><a href="#">{{ __("menu.services.consultation.main")}}</a>--}}
+{{--                            <ul class="dropdown">--}}
+{{--                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.consultation.needs")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.consultation.design")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.consultation.implementation")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-4-col.html">{{ __("menu.services.consultation.impact")}}</a></li>--}}
+{{--                              </ul>--}}
+{{--                          </li>--}}
+{{--                        --}}
+{{--                          <li><a href="#">{{ __("menu.services.accreditation.main")}}</a>--}}
+{{--                            <ul class="dropdown">--}}
+{{--                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.accreditation.centers")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.accreditation.programmes")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.accreditation.trainers")}}</a></li>--}}
+{{--                              </ul>--}}
+{{--                          </li>--}}
+{{--                          <li><a href="#">{{ __("menu.services.special.main")}}</a>--}}
+{{--                            <ul class="dropdown">--}}
+{{--                                <li><a href="portfolio-boxed-gutter-1-col.html">{{ __("menu.services.special.scientific_research")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-2-col.html">{{ __("menu.services.special.teaching_process")}}</a></li>--}}
+{{--                                <li><a href="portfolio-boxed-gutter-3-col.html">{{ __("menu.services.special.elearning")}}</a></li>--}}
+{{--                              </ul>--}}
+{{--                          </li>--}}
+{{--                        </ul>--}}
+{{--                      </li>--}}
 
                       @guest
-                      <li><a href="">{{ __("menu.login.main")}}</a>
+                      <li {{ (request()->is('site/login')) || (request()->is('site/register'))  ? 'active' : '' }}><a href="{{ route("site.showLogin") }}">{{ __("menu.login.current")}}</a>
                         <ul class="dropdown">
-                            <li class=""><a href="/login">{{ __("menu.login.current")}}</a></li>
-                            <li class=""><a href="/register">{{ __("menu.login.new")}}</a></li>
+
+                            <li class=""><a href="{{ route("site.showRegiser") }}">{{ __("menu.login.new")}}</a></li>
                         </ul>
                       </li>
                       @else
-                      <li><a href="/booking">{{ __("menu.booking")}}</a></li>
+                      <li {{ (request()->is('/booking')) ? 'active' : '' }}><a href="/booking">{{ __("menu.booking")}}</a></li>
 
-                      <li class="nav-item">
-                      <a class="nav-link js-scroll" href="/profile/{{ Auth::user()->id }}">{{Auth::user()->name}}</a>
+                      <li class="nav-item {{ (request()->is('site/edit-profile')) ? 'active' : '' }}">
+                      <a class="nav-link js-scroll" href="{{ route("edit.form") }}">{{Auth::user()->username}}</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link js-scroll" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                              Log Out
+                              {{ __("menu.login.Logout") }}
                           </a>
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                               {{ csrf_field() }}

@@ -437,7 +437,9 @@
         </div>
       </section>
 
-      <!-- Section: About -->
+    @include("parts.alert")
+
+    <!-- Section: About -->
       <section id="about" class="">
         <div class="container">
           <div class="section-content">
@@ -467,75 +469,57 @@
           <div class="section-title mb-10">
           <div class="row">
             <div class="col-md-8">
-              <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">Our <span class="text-theme-color-2 font-weight-400">COURSES</span></h2>
+              <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">Our <span class="text-theme-color-2 font-weight-400">Events </span></h2>
            </div>
           </div>
           </div>
+
           <div class="section-content">
             <div class="row">
               <div class="col-md-12">
+                @if($events->count() > 0 )
                 <div class="owl-carousel-4col" data-dots="true">
-                  <div class="item ">
-                    <div class="service-block bg-white">
-                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price">$125</span></h4>
-                      </div>
-                      <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">Accounting Technologies</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                      </div>
-                    </div>
-                  </div>
+
+                 @foreach($events as $event)
                   <div class="item">
+
                     <div class="service-block mb-md-30 bg-white">
                       <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price">$125</span></h4>
+                      <h4 class="text-white mt-0 mb-0"><span class="price"><i class="fa fa-users" aria-hidden="true"></i> {{ $event->capacity }}</span></h4>
                       </div>
                       <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">Computer Technologies</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
+                        <h4 class="line-bottom mb-10">{{ $event->program['name_'.$lang] }}</h4>
+                        <p>
+                          {{ \Illuminate\Support\Str::limit($event->program["description_".$lang], 120) }}
+                        </p>
+                        <p>
+                          <span>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          </span>
+                          {{ $event->location }}
+                        </p>
+                        <p>
+                          @foreach( explode(",",$event->trainers) as $trainer)
+                          <span>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                          </span>
+                          {{ $trainer }}
+                          @endforeach
+                        </p>
+                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>
                      </div>
                     </div>
+
                   </div>
-                  <div class="item">
-                    <div class="service-block mb-md-30 bg-white">
-                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price">$125</span></h4>
-                      </div>
-                      <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">Development Studies</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                     </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="service-block mb-md-30 bg-white">
-                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price">$125</span></h4>
-                      </div>
-                      <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">Electrical & Electronic</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                        <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="service-block mb-md-30 bg-white">
-                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price">$125</span></h4>
-                      </div>
-                      <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">Chemical Engineering</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                        <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
+
                 </div>
+                @else
+                  <div class="alert alert-warning text-center" style="padding: 40px" role="alert">
+                      No Event Avaialbel in Site Yet Join Us to can get the news
+                  </div>
+                @endif
+
               </div>
             </div>
           </div>
@@ -674,7 +658,7 @@
                   <a href="#select1" class="" data-filter=".select1">Photos</a>
                   <a href="#select2" class="" data-filter=".select2">Campus</a>
                   <a href="#select3" class="" data-filter=".select3">Students</a>
-                </div>
+                </div>0
                 <!-- End Works Filter -->
 
                 <!-- Portfolio Gallery Grid -->
@@ -1062,18 +1046,50 @@
         </div>
       </section>
 
+
+
       <!-- Section: blog -->
       <section id="blog" class="bg-lighter">
         <div class="container">
           <div class="section-title mb-10">
             <div class="row">
               <div class="col-md-12">
-                <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">Latest <span class="text-theme-color-2 font-weight-400">News</span></h2>
+                <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">Latest <span class="text-theme-color-2 font-weight-400">Events</span></h2>
              </div>
             </div>
           </div>
+
           <div class="section-content">
+
             <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="email">Event Program Chose </label>
+                  <select class="form-control " id="program" name="" >
+                    @foreach($programs as $program)
+                      <option value="{{ $program->id }}"> {{ $program['name_'.$lang]  }} </option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+
+                <div class="form-group">
+                  <label for="email">Date For event </label>
+                  <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" id="date" />
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="row" id="result">
+
+              @forelse( $events  as $event)
               <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                 <article class="post clearfix mb-sm-30">
                   <div class="entry-header">
@@ -1085,82 +1101,45 @@
                     <div class="entry-meta media mt-0 no-bg no-border">
                       <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                         <ul>
-                          <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                          <li class="font-12 text-white text-uppercase">Feb</li>
+                          <li class="font-16 text-white font-weight-600 border-bottom">{{ $event->event_start->format("d")}}</li>
+                          <li class="font-12 text-white text-uppercase">{{ $event->event_start->shortEnglishMonth }}</li>
                         </ul>
                       </div>
                       <div class="media-body pl-15">
                         <div class="event-content pull-left flip">
-                          <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
+                          <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#"> {{ $event->program['name_'.$lang] }} </a></h4>
+                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-user mr-5 text-theme-colored"></i> {{ $event->users_count }}  Join</span>
+                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-users mr-5 text-theme-colored"></i> {{ $event->capacity }} Max </span>
                         </div>
                       </div>
                     </div>
-                    <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda Pariatur iste.</p>
+                    <p  class="mt-10">
+                      {{ \Illuminate\Support\Str::limit($event->program["description_".$lang], 120) }}
+                    </p>
+                    <p>
+                          <span>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          </span>
+                      {{ $event->location }}
+                    </p>
+                    <p>
+                      @foreach( explode(",",$event->trainers) as $trainer)
+                        <span>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                          </span>
+                        {{ $trainer }}
+                      @endforeach
+                    </p>
                     <a href="#" class="btn-read-more">Read more</a>
                     <div class="clearfix"></div>
                   </div>
                 </article>
               </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
-                <article class="post clearfix mb-sm-30">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb">
-                      <img src="http://placehold.it/330x225" alt="" class="img-responsive img-fullwidth">
-                    </div>
-                  </div>
-                  <div class="entry-content p-20 pr-10 bg-white">
-                    <div class="entry-meta media mt-0 no-bg no-border">
-                      <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                        <ul>
-                          <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                          <li class="font-12 text-white text-uppercase">Feb</li>
-                        </ul>
-                      </div>
-                      <div class="media-body pl-15">
-                        <div class="event-content pull-left flip">
-                          <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda Pariatur iste.</p>
-                    <a href="#" class="btn-read-more">Read more</a>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
-                <article class="post clearfix">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb">
-                      <img src="http://placehold.it/330x225" alt="" class="img-responsive img-fullwidth">
-                    </div>
-                  </div>
-                  <div class="entry-content p-20 pr-10 bg-white">
-                    <div class="entry-meta media mt-0 no-bg no-border">
-                      <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                        <ul>
-                          <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                          <li class="font-12 text-white text-uppercase">Feb</li>
-                        </ul>
-                      </div>
-                      <div class="media-body pl-15">
-                        <div class="event-content pull-left flip">
-                          <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda Pariatur iste.</p>
-                    <a href="#" class="btn-read-more">Read more</a>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
+              @empty
+                <div class="alert alert-warning text-center" style="padding: 40px" role="alert">
+                  No Event Avaialbel in Site Yet Join Us to can get the news
+                </div>
+              @endif
             </div>
           </div>
         </div>
@@ -1293,5 +1272,72 @@
     <!-- end main-content -->
     </div>
 
+  <script>
+    window.onload = function () {
+      $(function () {
 
+
+      });
+    }
+  </script>
+@endsection
+
+
+@section("scripto")
+  <script>
+
+    window.onload = function () {
+      var program  = $("#program")
+      var Time     = $("#datetimepicker3")
+      var date     = $("#date");
+      var result   = $("#result")
+
+      function Search (){
+        let program_id = program.val();
+        let date_search= date.val()
+        let url        = "{{ route("main.search") }}"
+        let user_id    = "{{ auth()->id() ? auth()->id() : '' }}"
+        console.log(user_id);
+        $.ajax({
+          type: "GET",
+          url:url,
+          data:{
+            program_id,
+            date_search,
+            user_id
+          },
+          dataType: "json",
+          success: (resultData)=>{
+            if (resultData.key == "1"){
+              console.log(resultData)
+              result.html(resultData.data)
+            }
+            else {
+              alert("error")
+            }
+
+          },
+          error:function (error) {
+            alert("error")
+          }
+        })
+      }
+
+
+      $("body").on("change","#program",function(){
+        Search()
+      })
+
+      $("#datetimepicker3").on("dp.change", function (e) {
+        Search()
+      });
+
+      $('#datetimepicker3').datetimepicker({
+        // useCurrent: false //Important! See issue #1075
+        minDate: new Date(),
+      });
+
+
+    }
+  </script>
 @endsection

@@ -96,6 +96,7 @@
 <!-- external javascripts -->
 <script src="{{ asset('front/js/jquery-2.2.4.min.js') }}"></script>
 <script src="{{ asset('front/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('front/js/vue.min.js') }}"></script>
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <!-- JS | jquery plugin collection for this theme -->
 <script src="{{ asset('front/js/jquery-plugin-collection.js') }}"></script>

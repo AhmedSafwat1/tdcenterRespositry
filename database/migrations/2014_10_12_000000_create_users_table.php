@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             $table->date('birthdate');
             $table->string('nationality');
             $table->bigInteger('national_id');
-            $table->bigInteger('phone_number');
-            $table->bigInteger('home_phone')->nullable();
+            $table->string('phone_number');
+            $table->string('home_phone')->nullable();
             $table->string('username');
             // $table->boolean('verified')->default(0);
             $table->boolean('active')->default(false);
