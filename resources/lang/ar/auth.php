@@ -1,9 +1,10 @@
 <?php
+
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | menu
+    | Authentication Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -11,18 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    "home"=>"Main Page",
-    'booking' => 'Booking',
-    'login' => [
-       "main" => "Join-us",
-        "current"=>"Login",
-        "new"=>"Reigster",
-        "Logout"=>"Logout"
-    ],
-    "lang"=>[
-        "main"=>"Language",
-        "english"=>"English",
-        "arabic"=>"اللغه العربيه"
-    ]
+
+    'failed' => 'الاميل او كلمة السر غير صحيه.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

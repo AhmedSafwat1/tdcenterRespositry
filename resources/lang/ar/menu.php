@@ -11,16 +11,16 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    "home"=>"Main Page",
-    'booking' => 'Booking',
+    "home"=>"الرئيسيه",
+    'booking' => 'حجوزاتى',
     'login' => [
-       "main" => "Join-us",
-        "current"=>"Login",
-        "new"=>"Reigster",
-        "Logout"=>"Logout"
+       "main" => "انضم الينا",
+        "current"=>"تسجيل دخول",
+        "new"=>"تسجيل جديد",
+        "Logout"=>"تسجيل خروج"
     ],
     "lang"=>[
-        "main"=>"Language",
+        "main"=>"اللغه",
         "english"=>"English",
         "arabic"=>"اللغه العربيه"
     ]

@@ -11,18 +11,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    "home"=>"Main Page",
-    'booking' => 'Booking',
-    'login' => [
-       "main" => "Join-us",
-        "current"=>"Login",
-        "new"=>"Reigster",
-        "Logout"=>"Logout"
-    ],
-    "lang"=>[
-        "main"=>"Language",
-        "english"=>"English",
-        "arabic"=>"اللغه العربيه"
-    ]
+    "add"=>"Add Sucessfull",
+    "send"=>"Sending Sucessfull wait Revesion from Admin",
 
 ];

@@ -218,7 +218,7 @@
                         </ul>
                       </li>
                       @else
-                      <li {{ (request()->is('/booking')) ? 'active' : '' }}><a href="/booking">{{ __("menu.booking")}}</a></li>
+                      <li class=" {{ (request()->is('booking')) || (request()->is('make-request')) ? 'active' : '' }} " ><a href="/booking">{{ __("menu.booking")}}</a></li>
 
                       <li class="nav-item {{ (request()->is('site/edit-profile')) ? 'active' : '' }}">
                       <a class="nav-link js-scroll" href="{{ route("edit.form") }}">{{Auth::user()->username}}</a>
@@ -239,8 +239,8 @@
 
                       <li><a href="">{{ __("menu.lang.main")}}</a>
                         <ul class="dropdown">
-                            <li class=""><a href="lang/en"><img src="{{asset('front/images/us.png')}}" width="30px" height="20x"> {{ __("menu.lang.english")}}</a></li>
-                            <li class=""><a href="lang/ar"><img src="{{asset('front/images/ar.png')}}" width="30px" height="20x"> {{ __("menu.lang.arabic")}}</a></li>
+                            <li class=""><a href="{{route("langue.change",["locale"=>"en"])}}"><img src="{{asset('front/images/us.png')}}" width="30px" height="20x"> {{ __("menu.lang.english")}}</a></li>
+                            <li class=""><a href="{{route("langue.change",["locale"=>"ar"])}}"><img src="{{asset('front/images/ar.png')}}" width="30px" height="20x"> {{ __("menu.lang.arabic")}}</a></li>
                         </ul>
                       </li>
 

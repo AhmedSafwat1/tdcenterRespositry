@@ -19,8 +19,8 @@ class CreateRequestsTable extends Migration
             // $table->string('req_type');
             $table->unsignedBigInteger('request_type_id');
             $table->foreign('request_type_id')->references('id')->on('request_types');
-            $table->string('req_status');
-            $table->integer('req_number');
+            $table->string('req_status')->default("pending");
+            $table->string('req_number');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

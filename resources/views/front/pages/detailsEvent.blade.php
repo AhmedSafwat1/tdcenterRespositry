@@ -96,8 +96,17 @@
                                         {{ $trainer }}
                                     @endforeach
                                 </p>
-                                <a href="#" class="btn btn-info "> <i class="fa fa-ticket"></i> Book Now</a>
+                                @if($status == "allow")
+                                    <a href="{{ route("event.booked", ["id"=>$event->id]) }}" class="btn btn-info "> <i class="fa fa-ticket"></i> Book Now</a>
+                                @elseif($status  == "pending")
+                                    <button class="btn btn btn-warning"> <i class="fa fa-clock-o" aria-hidden="true"></i> pending</button>
+                                @elseif($status == "approve" )
+                                    <button class="btn btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> approve</button>
+                                @else
+                                    <button class="btn btn btn-danger"><i class="fa fa-times-circle" aria-hidden="true"></i> refuse </button>
+                                @endif
                                 <div class="clearfix"></div>
+
                             </div>
                         </article>
                     </div>
@@ -108,79 +117,4 @@
     </div>
     <!-- end main-content -->
 
-@endsection
-
-@section("scripto")
-    <script>
-
-        {{--window.onload = function () {--}}
-        {{--    $univercity  = $("#univercity")--}}
-        {{--    $facaulty    = $("#faculty")--}}
-        {{--    $department  = $("#department")--}}
-        {{--    $("body").on("change","#univercity",function(){--}}
-        {{--        let x = $(this).val()--}}
-        {{--        if( x){--}}
-        {{--            let url = "{{url("site/get-faculty")}}"+"/"+ x--}}
-        {{--            $.ajax({--}}
-        {{--                type: "GET",--}}
-        {{--                url:url,--}}
-        {{--                dataType: "json",--}}
-        {{--                success: (resultData)=>{--}}
-        {{--                    if (resultData.key == "1"){--}}
-        {{--                        $facaulty.html("").attr("disabled",false)--}}
-        {{--                        $facaulty.html(resultData.data)--}}
-        {{--                        $department.html("").attr("disabled",true)--}}
-        {{--                    }--}}
-        {{--                    else {--}}
-        {{--                        $facaulty.html("").attr("disabled",true)--}}
-        {{--                        $department.html("").attr("disabled",true)--}}
-        {{--                    }--}}
-
-        {{--                },--}}
-        {{--                error:function (error) {--}}
-        {{--                    alert("error")--}}
-        {{--                    $facaulty.html("").attr("disabled",true)--}}
-        {{--                    $department.html("").attr("disabled",true)--}}
-        {{--                }--}}
-        {{--            })--}}
-        {{--        }--}}
-        {{--        else{--}}
-        {{--            $facaulty.html("").attr("disabled",true)--}}
-        {{--            $department.html("").attr("disabled",true)--}}
-        {{--        }--}}
-
-        {{--    })--}}
-
-        {{--    $("body").on("change","#faculty",function(){--}}
-        {{--        let x = $(this).val()--}}
-        {{--        if( x){--}}
-        {{--            let url = "{{url("site/get-department")}}"+"/"+ x--}}
-        {{--            $.ajax({--}}
-        {{--                type: "GET",--}}
-        {{--                url:url,--}}
-        {{--                dataType: "json",--}}
-        {{--                success: (resultData)=>{--}}
-        {{--                    if (resultData.key == "1"){--}}
-        {{--                        $department.html("").attr("disabled",false)--}}
-        {{--                        $department.html(resultData.data)--}}
-        {{--                    }--}}
-        {{--                    else {--}}
-        {{--                        $department.html("").attr("disabled",true)--}}
-        {{--                    }--}}
-
-        {{--                },--}}
-        {{--                error:function (error) {--}}
-        {{--                    alert("error")--}}
-        {{--                    $department.html("").attr("disabled",true)--}}
-        {{--                }--}}
-        {{--            })--}}
-        {{--        }--}}
-        {{--        else{--}}
-        {{--            $department.html("").attr("disabled",true)--}}
-        {{--        }--}}
-
-        {{--    })--}}
-        {{--    $(`input[name='password']`).val("")--}}
-        {{--}--}}
-    </script>
 @endsection
