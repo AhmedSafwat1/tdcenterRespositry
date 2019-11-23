@@ -58,6 +58,7 @@
                                         <ul>
                                             <li class="font-16 text-white font-weight-600 border-bottom">{{ $event->event_start->format("d")}}</li>
                                             <li class="font-12 text-white text-uppercase">{{ $event->event_start->shortEnglishMonth }}</li>
+
                                         </ul>
                                     </div>
                                     <div class="media-body pl-15">
@@ -69,6 +70,7 @@
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-calendar mr-5 text-theme-colored"></i> {{ $event->event_start->format("d-m-Y") }} <span style="color: #0F9E5E"> Start </span> </span>
 
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-calendar mr-5 text-theme-colored"></i> {{ $event->event_end->format("d-m-Y") }}  <span style="color: red"> End</span> </span>
+                                            <span class="mb-10   mr-10 font-13" style="color: #00A3C8;"> {{ __("main.".$event->type) }}</span>
                                         </div>
                                     </div>
                                 </div>

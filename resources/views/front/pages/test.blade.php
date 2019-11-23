@@ -8,7 +8,7 @@
 
 
     <!-- Start main-content -->
-    <div class="main-content">
+    <div class="main-content" dir="{{ $lang }}">
 
       <!-- Section: home -->
       <section id="home">
@@ -477,46 +477,165 @@
           <div class="section-content">
             <div class="row">
               <div class="col-md-12">
-                @if($events->count() > 0 )
-                <div class="owl-carousel-4col" data-dots="true">
+                @if($eventevening->count() > 0 )
+{{--                     <div class="owl-carousel-4col" data-dots="true">--}}
 
-                 @foreach($events as $event)
-                  <div class="item">
+{{--                 @foreach($events as $event)--}}
+{{--                  <div class="item">--}}
 
-                    <div class="service-block mb-md-30 bg-white">
-                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">
-                      <h4 class="text-white mt-0 mb-0"><span class="price"><i class="fa fa-users" aria-hidden="true"></i> {{ $event->capacity }}</span></h4>
-                      </div>
-                      <div class="content text-left flip p-25 pt-0">
-                        <h4 class="line-bottom mb-10">{{ $event->program['name_'.$lang] }}</h4>
-                        <p>
-                          {{ \Illuminate\Support\Str::limit($event->program["description_".$lang], 120) }}
-                        </p>
-                        <p>
-                          <span>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                          </span>
-                          {{ $event->location }}
-                        </p>
-                        <p>
-                          @foreach( explode(",",$event->trainers) as $trainer)
-                          <span>
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                          </span>
-                          {{ $trainer }}
-                          @endforeach
-                        </p>
-                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>
-                     </div>
-                    </div>
+{{--                    <div class="service-block mb-md-30 bg-white">--}}
+{{--                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">--}}
+{{--                      <h4 class="text-white mt-0 mb-0"><span class="price"><i class="fa fa-users" aria-hidden="true"></i> {{ $event->capacity }}</span></h4>--}}
+{{--                      </div>--}}
+{{--                      <div class="content text-left flip p-25 pt-0">--}}
+{{--                        <h4 class="line-bottom mb-10">{{ $event->program['name_'.$lang] }}</h4>--}}
+{{--                        <p>--}}
+{{--                          {{ \Illuminate\Support\Str::limit($event->program["description_".$lang], 120) }}--}}
+{{--                        </p>--}}
+{{--                        <p>--}}
+{{--                          <span>--}}
+{{--                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                          </span>--}}
+{{--                          {{ $event->location }}--}}
+{{--                        </p>--}}
+{{--                        <p>--}}
+{{--                          @foreach( explode(",",$event->trainers) as $trainer)--}}
+{{--                          <span>--}}
+{{--                            <i class="fa fa-user" aria-hidden="true"></i>--}}
+{{--                          </span>--}}
+{{--                          {{ $trainer }}--}}
+{{--                          @endforeach--}}
+{{--                        </p>--}}
+{{--                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>--}}
+{{--                     </div>--}}
+{{--                    </div>--}}
 
+{{--                  </div>--}}
+{{--                  @endforeach--}}
+
+{{--                </div>--}}
+                  <div class="table-responsive">
+                    <table class="table data_table">
+                      <caption  class="h2" style=" color: red">Event Evening </caption>
+                      <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">course</th>
+                        <th scope="col">Periode</th>
+                        <th scope="col">Postion</th>
+                        <th scope="col">start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      @foreach($eventevening as $event)
+                      <tr>
+                        <th scope="row">{{ $event->id }}</th>
+                        <td>{{ $event->program['name_'.$lang] }}  </td>
+                        <td> {{ $event->program->module['name_'.$lang] }} </td>
+                        <td> {{ $event->location }} </td>
+                        <td> {{ $event->event_start->format("d-m-Y")}} </td>
+                        <td> {{ $event->event_end->format("d-m-Y")}} </td>
+                        <td> {{ $event->capacity}} </td>
+                        <td>
+                          <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase " href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>
+                        </td>
+                      </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
                   </div>
-                  @endforeach
 
-                </div>
                 @else
                   <div class="alert alert-warning text-center" style="padding: 40px" role="alert">
                       No Event Avaialbel in Site Yet Join Us to can get the news
+                  </div>
+                @endif
+
+              </div>
+
+
+              {{--===========================--}}
+              <div class="col-md-12 " style="border-bottom: 2px solid black; padding: 40px ;margin-bottom: 40px">
+
+              </div>
+              <div class="col-md-12" style="margin-top: 40px">
+                @if($eventMoring->count() > 0 )
+                  {{--                     <div class="owl-carousel-4col" data-dots="true">--}}
+
+                  {{--                 @foreach($events as $event)--}}
+                  {{--                  <div class="item">--}}
+
+                  {{--                    <div class="service-block mb-md-30 bg-white">--}}
+                  {{--                      <div class="thumb"> <img alt="featured project" src="http://placehold.it/265x195" class="img-responsive img-fullwidth">--}}
+                  {{--                      <h4 class="text-white mt-0 mb-0"><span class="price"><i class="fa fa-users" aria-hidden="true"></i> {{ $event->capacity }}</span></h4>--}}
+                  {{--                      </div>--}}
+                  {{--                      <div class="content text-left flip p-25 pt-0">--}}
+                  {{--                        <h4 class="line-bottom mb-10">{{ $event->program['name_'.$lang] }}</h4>--}}
+                  {{--                        <p>--}}
+                  {{--                          {{ \Illuminate\Support\Str::limit($event->program["description_".$lang], 120) }}--}}
+                  {{--                        </p>--}}
+                  {{--                        <p>--}}
+                  {{--                          <span>--}}
+                  {{--                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+                  {{--                          </span>--}}
+                  {{--                          {{ $event->location }}--}}
+                  {{--                        </p>--}}
+                  {{--                        <p>--}}
+                  {{--                          @foreach( explode(",",$event->trainers) as $trainer)--}}
+                  {{--                          <span>--}}
+                  {{--                            <i class="fa fa-user" aria-hidden="true"></i>--}}
+                  {{--                          </span>--}}
+                  {{--                          {{ $trainer }}--}}
+                  {{--                          @endforeach--}}
+                  {{--                        </p>--}}
+                  {{--                       <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>--}}
+                  {{--                     </div>--}}
+                  {{--                    </div>--}}
+
+                  {{--                  </div>--}}
+                  {{--                  @endforeach--}}
+
+                  {{--                </div>--}}
+                  <div class="table-responsive">
+                    <table class="table data_table">
+                      <caption  class="h2" style=" color: red">Courses Morning </caption>
+                      <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">course</th>
+                        <th scope="col">Periode</th>
+                        <th scope="col">Postion</th>
+                        <th scope="col">start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      @foreach($eventMoring as $event)
+                        <tr>
+                          <th scope="row">{{ $event->id }}</th>
+                          <td>{{ $event->program['name_'.$lang] }}  </td>
+                          <td> {{ $event->program->module['name_'.$lang] }} </td>
+                          <td> {{ $event->location }} </td>
+                          <td> {{ $event->event_start->format("d-m-Y")}} </td>
+                          <td> {{ $event->event_end->format("d-m-Y")}} </td>
+                          <td> {{ $event->capacity}} </td>
+                          <td>
+                            <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase " href="{{ route("event.details",['id'=>$event->id]) }}">view details</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+
+                @else
+                  <div class="alert alert-warning text-center" style="padding: 40px" role="alert">
+                    No Event Avaialbel in Site Yet Join Us to can get the news
                   </div>
                 @endif
 
@@ -1352,5 +1471,13 @@
 
 
     }
+    var lang  = "{{ $lang  == "ar" ? 'Arabic.json' : "English.json"}}";
+    $(document).ready( function () {
+      $('.data_table').DataTable({
+        "language": {
+          "url": `//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/${lang}`
+        }
+      });
+    })
   </script>
 @endsection

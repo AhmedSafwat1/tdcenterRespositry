@@ -34,8 +34,12 @@ class EventController extends Controller
                 $query->where("user_id",$user->id)->where("status","accept");;
             });
         }
-        $events = $events->withCount("users")->latest("event_start")->get();
-        return view('front.pages.test',compact("events","lang","programs"));
+        $events       = $events->withCount("users");
+        $events2      = clone $events;
+        $eventMoring  = $events->where("type","morning")->latest("event_start")->get();
+        $eventevening = $events2->where("type","evening")->latest("event_start")->get();
+//        dd($eventevening);
+        return view('front.pages.test',compact("eventMoring","eventevening","lang","programs"));
     }
 
 

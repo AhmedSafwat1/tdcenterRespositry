@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->datetime('event_start');
             $table->datetime('event_end');
             $table->integer('capacity');
+            $table->string("type")->default("morning");
             $table->string('location');
             $table->timestamps();
 
