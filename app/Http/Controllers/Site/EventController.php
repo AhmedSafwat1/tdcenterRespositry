@@ -40,11 +40,12 @@ class EventController extends Controller
 
 
     public function main(Request $request){
-        $data    = Carbon::parse($request->date_search);
+        $data    = ($request->date_search);
         $program = $request->program_id;
         $lang    = App::getLocale();
         $user    = $request->user_id;
-        $events  = Event::with("program")->where("program_id",$program)->whereDate("event_start" , ">=", $data);
+        $events  = Event::with("program")->whereDate("event_start" , ">=", Carbon::now())->where("program_id",$program);
+        $events  = $events->whereMonth("event_start", $data);
         if($user){
             $events= $events->whereDoesntHave("users",function ($query) use($user){
                 $query->where("user_id",$user)->where("status","accept");

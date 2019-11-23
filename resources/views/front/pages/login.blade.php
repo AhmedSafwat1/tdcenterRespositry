@@ -56,16 +56,20 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <input class="form-check-input" name="remember" type="checkbox" id="gridCheck">
                                             <label class="form-check-label" for="gridCheck">
                                                Remember Me
                                             </label>
+                                            <a style="font-size: 16px" href=" {{ url("password/reset") }}" class="btn btn-link">
+                                                Forget password
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary " > Login </button>

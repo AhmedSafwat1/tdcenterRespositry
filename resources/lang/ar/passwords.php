@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have e-mailed your password reset link!',
+    'reset' => 'لقد قمت باعادة تعين كلمة المرور!',
+    'sent' => 'لقد ارسلنا لكك اميل يحتوى على لينك للاعادة تعين كلمة المرور!',
     'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'user' => "البريد الاكترونى غير مسجل لدينا.",
 
 ];
